@@ -1,0 +1,21 @@
+{
+  "name": "Campus Compass Navigation",
+  "version": "1.0.0",
+  "platform": "android",
+  "framework": "flutter",
+  "backend": {
+    "framework": "nestjs",
+    "port": 3000,
+    "api_prefix": "/api/v1"
+  },
+  "antigravity": {
+    "enabled": true,
+    "ai_assistant_endpoint": "/api/v1/antigravity/chat",
+    "features": [
+      "campus_navigation",
+      "geofence_mascots",
+      "wheelchair_accessible_routing",
+      "ai_voice_guide"
+    ]
+  }
+}
