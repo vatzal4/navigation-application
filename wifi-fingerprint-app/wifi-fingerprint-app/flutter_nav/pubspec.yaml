@@ -1,0 +1,33 @@
+name: flutter_nav
+description: "Indoor Navigation App prototype for building SOS."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Real WiFi access-point scanning (BSSID + RSSI) for Android
+  wifi_scan: ^0.4.1
+
+  # Location permissions required by Android for WiFi scanning
+  permission_handler: ^11.3.1
+
+  # HTTP client to communicate with Flask backend
+  http: ^1.2.2
+
+  # Renders the SVG floor plans
+  flutter_svg: ^2.0.10+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/floorplans/sos/

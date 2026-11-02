@@ -1,0 +1,806 @@
+{
+  "floor": 0,
+  "label": "Ground Floor",
+  "nodes": [
+    {
+      "id": "f0-junction-1",
+      "x": 200,
+      "y": 440,
+      "floor": 0,
+      "room": null,
+      "accessible": true,
+      "type": "junction"
+    },
+    {
+      "id": "f0-junction-2",
+      "x": 500,
+      "y": 440,
+      "floor": 0,
+      "room": null,
+      "accessible": true,
+      "type": "junction"
+    },
+    {
+      "id": "f0-junction-3",
+      "x": 800,
+      "y": 440,
+      "floor": 0,
+      "room": null,
+      "accessible": true,
+      "type": "junction"
+    },
+    {
+      "id": "f0-junction-4",
+      "x": 1100,
+      "y": 440,
+      "floor": 0,
+      "room": null,
+      "accessible": true,
+      "type": "junction"
+    },
+    {
+      "id": "f0-junction-5",
+      "x": 1350,
+      "y": 440,
+      "floor": 0,
+      "room": null,
+      "accessible": true,
+      "type": "junction"
+    },
+    {
+      "id": "f0-room-top-01-stair-alcove",
+      "x": 247.5,
+      "y": 194.0,
+      "floor": 0,
+      "room": "top-01-stair-alcove",
+      "accessible": true,
+      "type": "room"
+    },
+    {
+      "id": "f0-room-top-02",
+      "x": 495.5,
+      "y": 194.0,
+      "floor": 0,
+      "room": "top-02",
+      "accessible": true,
+      "type": "room"
+    },
+    {
+      "id": "f0-room-top-03",
+      "x": 718.0,
+      "y": 194.0,
+      "floor": 0,
+      "room": "top-03",
+      "accessible": true,
+      "type": "room"
+    },
+    {
+      "id": "f0-room-top-04",
+      "x": 866.5,
+      "y": 194.0,
+      "floor": 0,
+      "room": "top-04",
+      "accessible": true,
+      "type": "room"
+    },
+    {
+      "id": "f0-room-top-05-riser",
+      "x": 1006.0,
+      "y": 168.0,
+      "floor": 0,
+      "room": "top-05-riser",
+      "accessible": true,
+      "type": "room"
+    },
+    {
+      "id": "f0-room-top-06",
+      "x": 1152.5,
+      "y": 194.0,
+      "floor": 0,
+      "room": "top-06",
+      "accessible": true,
+      "type": "room"
+    },
+    {
+      "id": "f0-room-top-07",
+      "x": 1327.0,
+      "y": 194.0,
+      "floor": 0,
+      "room": "top-07",
+      "accessible": true,
+      "type": "room"
+    },
+    {
+      "id": "f0-room-west-01",
+      "x": 82.5,
+      "y": 202.0,
+      "floor": 0,
+      "room": "west-01",
+      "accessible": true,
+      "type": "room"
+    },
+    {
+      "id": "f0-room-west-02",
+      "x": 82.5,
+      "y": 292.5,
+      "floor": 0,
+      "room": "west-02",
+      "accessible": true,
+      "type": "room"
+    },
+    {
+      "id": "f0-room-west-03",
+      "x": 82.5,
+      "y": 472.5,
+      "floor": 0,
+      "room": "west-03",
+      "accessible": true,
+      "type": "room"
+    },
+    {
+      "id": "f0-room-west-04-alcove",
+      "x": 203.0,
+      "y": 681.5,
+      "floor": 0,
+      "room": "west-04-alcove",
+      "accessible": true,
+      "type": "room"
+    },
+    {
+      "id": "f0-room-mid-01",
+      "x": 792.5,
+      "y": 394.0,
+      "floor": 0,
+      "room": "mid-01",
+      "accessible": true,
+      "type": "room"
+    },
+    {
+      "id": "f0-room-mid-02",
+      "x": 792.5,
+      "y": 546.0,
+      "floor": 0,
+      "room": "mid-02",
+      "accessible": true,
+      "type": "room"
+    },
+    {
+      "id": "f0-room-bottom-01",
+      "x": 545.0,
+      "y": 693.5,
+      "floor": 0,
+      "room": "bottom-01",
+      "accessible": true,
+      "type": "room"
+    },
+    {
+      "id": "f0-room-bottom-02",
+      "x": 832.0,
+      "y": 693.5,
+      "floor": 0,
+      "room": "bottom-02",
+      "accessible": true,
+      "type": "room"
+    },
+    {
+      "id": "f0-room-bottom-03",
+      "x": 1210.0,
+      "y": 693.5,
+      "floor": 0,
+      "room": "bottom-03",
+      "accessible": true,
+      "type": "room"
+    },
+    {
+      "id": "f0-room-bottom-04",
+      "x": 1378.0,
+      "y": 693.5,
+      "floor": 0,
+      "room": "bottom-04",
+      "accessible": true,
+      "type": "room"
+    },
+    {
+      "id": "f0-room-east-01",
+      "x": 1496.5,
+      "y": 310.5,
+      "floor": 0,
+      "room": "east-01",
+      "accessible": true,
+      "type": "room"
+    },
+    {
+      "id": "f0-room-east-02",
+      "x": 1496.5,
+      "y": 464.0,
+      "floor": 0,
+      "room": "east-02",
+      "accessible": true,
+      "type": "room"
+    },
+    {
+      "id": "f0-room-east-03",
+      "x": 1496.5,
+      "y": 591.0,
+      "floor": 0,
+      "room": "east-03",
+      "accessible": true,
+      "type": "room"
+    },
+    {
+      "id": "f0-room-hall-west",
+      "x": 509.0,
+      "y": 442.0,
+      "floor": 0,
+      "room": "hall-west",
+      "accessible": true,
+      "type": "room"
+    },
+    {
+      "id": "f0-room-hall-east",
+      "x": 1142.5,
+      "y": 444.0,
+      "floor": 0,
+      "room": "hall-east",
+      "accessible": true,
+      "type": "room"
+    },
+    {
+      "id": "f0-stairs-nw",
+      "x": 223,
+      "y": 189,
+      "floor": 0,
+      "room": null,
+      "accessible": false,
+      "type": "stair",
+      "connector_group": "stairs-nw"
+    },
+    {
+      "id": "f0-stairs-ne",
+      "x": 1384,
+      "y": 200,
+      "floor": 0,
+      "room": null,
+      "accessible": false,
+      "type": "stair",
+      "connector_group": "stairs-ne"
+    },
+    {
+      "id": "f0-stairs-sw",
+      "x": 220,
+      "y": 656,
+      "floor": 0,
+      "room": null,
+      "accessible": false,
+      "type": "stair",
+      "connector_group": "stairs-sw"
+    },
+    {
+      "id": "f0-stairs-s",
+      "x": 1015,
+      "y": 776,
+      "floor": 0,
+      "room": null,
+      "accessible": false,
+      "type": "stair",
+      "connector_group": "stairs-s"
+    },
+    {
+      "id": "f0-stairs-c1",
+      "x": 942,
+      "y": 507,
+      "floor": 0,
+      "room": null,
+      "accessible": false,
+      "type": "stair",
+      "connector_group": "stairs-c1"
+    },
+    {
+      "id": "f0-stairs-c2",
+      "x": 1027,
+      "y": 562,
+      "floor": 0,
+      "room": null,
+      "accessible": false,
+      "type": "stair",
+      "connector_group": "stairs-c2"
+    },
+    {
+      "id": "f0-elevator-main",
+      "x": 1497,
+      "y": 460,
+      "floor": 0,
+      "room": null,
+      "accessible": true,
+      "type": "elevator",
+      "connector_group": "elevator-main"
+    },
+    {
+      "id": "f0-node-entrance",
+      "x": 1560,
+      "y": 400,
+      "floor": 0,
+      "room": null,
+      "accessible": true,
+      "type": "entrance"
+    }
+  ],
+  "edges": [
+    {
+      "from": "f0-junction-1",
+      "to": "f0-junction-2",
+      "cost": 300.0,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-2",
+      "to": "f0-junction-1",
+      "cost": 300.0,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-2",
+      "to": "f0-junction-3",
+      "cost": 300.0,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-3",
+      "to": "f0-junction-2",
+      "cost": 300.0,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-3",
+      "to": "f0-junction-4",
+      "cost": 300.0,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-4",
+      "to": "f0-junction-3",
+      "cost": 300.0,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-4",
+      "to": "f0-junction-5",
+      "cost": 250.0,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-5",
+      "to": "f0-junction-4",
+      "cost": 250.0,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-room-top-01-stair-alcove",
+      "to": "f0-junction-1",
+      "cost": 250.5,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-1",
+      "to": "f0-room-top-01-stair-alcove",
+      "cost": 250.5,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-room-top-02",
+      "to": "f0-junction-2",
+      "cost": 246.0,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-2",
+      "to": "f0-room-top-02",
+      "cost": 246.0,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-room-top-03",
+      "to": "f0-junction-3",
+      "cost": 259.3,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-3",
+      "to": "f0-room-top-03",
+      "cost": 259.3,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-room-top-04",
+      "to": "f0-junction-3",
+      "cost": 254.8,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-3",
+      "to": "f0-room-top-04",
+      "cost": 254.8,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-room-top-05-riser",
+      "to": "f0-junction-4",
+      "cost": 287.8,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-4",
+      "to": "f0-room-top-05-riser",
+      "cost": 287.8,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-room-top-06",
+      "to": "f0-junction-4",
+      "cost": 251.5,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-4",
+      "to": "f0-room-top-06",
+      "cost": 251.5,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-room-top-07",
+      "to": "f0-junction-5",
+      "cost": 247.1,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-5",
+      "to": "f0-room-top-07",
+      "cost": 247.1,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-room-west-01",
+      "to": "f0-junction-1",
+      "cost": 265.4,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-1",
+      "to": "f0-room-west-01",
+      "cost": 265.4,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-room-west-02",
+      "to": "f0-junction-1",
+      "cost": 188.6,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-1",
+      "to": "f0-room-west-02",
+      "cost": 188.6,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-room-west-03",
+      "to": "f0-junction-1",
+      "cost": 121.9,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-1",
+      "to": "f0-room-west-03",
+      "cost": 121.9,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-room-west-04-alcove",
+      "to": "f0-junction-1",
+      "cost": 241.5,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-1",
+      "to": "f0-room-west-04-alcove",
+      "cost": 241.5,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-room-mid-01",
+      "to": "f0-junction-3",
+      "cost": 46.6,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-3",
+      "to": "f0-room-mid-01",
+      "cost": 46.6,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-room-mid-02",
+      "to": "f0-junction-3",
+      "cost": 106.3,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-3",
+      "to": "f0-room-mid-02",
+      "cost": 106.3,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-room-bottom-01",
+      "to": "f0-junction-2",
+      "cost": 257.5,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-2",
+      "to": "f0-room-bottom-01",
+      "cost": 257.5,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-room-bottom-02",
+      "to": "f0-junction-3",
+      "cost": 255.5,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-3",
+      "to": "f0-room-bottom-02",
+      "cost": 255.5,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-room-bottom-03",
+      "to": "f0-junction-4",
+      "cost": 276.3,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-4",
+      "to": "f0-room-bottom-03",
+      "cost": 276.3,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-room-bottom-04",
+      "to": "f0-junction-5",
+      "cost": 255.0,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-5",
+      "to": "f0-room-bottom-04",
+      "cost": 255.0,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-room-east-01",
+      "to": "f0-junction-5",
+      "cost": 195.5,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-5",
+      "to": "f0-room-east-01",
+      "cost": 195.5,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-room-east-02",
+      "to": "f0-junction-5",
+      "cost": 148.5,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-5",
+      "to": "f0-room-east-02",
+      "cost": 148.5,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-room-east-03",
+      "to": "f0-junction-5",
+      "cost": 210.4,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-5",
+      "to": "f0-room-east-03",
+      "cost": 210.4,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-room-hall-west",
+      "to": "f0-junction-2",
+      "cost": 9.2,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-2",
+      "to": "f0-room-hall-west",
+      "cost": 9.2,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-room-hall-east",
+      "to": "f0-junction-4",
+      "cost": 42.7,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-4",
+      "to": "f0-room-hall-east",
+      "cost": 42.7,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-stairs-nw",
+      "to": "f0-junction-1",
+      "cost": 252.1,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-1",
+      "to": "f0-stairs-nw",
+      "cost": 252.1,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-stairs-ne",
+      "to": "f0-junction-5",
+      "cost": 242.4,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-5",
+      "to": "f0-stairs-ne",
+      "cost": 242.4,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-stairs-sw",
+      "to": "f0-junction-1",
+      "cost": 216.9,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-1",
+      "to": "f0-stairs-sw",
+      "cost": 216.9,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-stairs-s",
+      "to": "f0-junction-4",
+      "cost": 346.6,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-4",
+      "to": "f0-stairs-s",
+      "cost": 346.6,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-stairs-c1",
+      "to": "f0-junction-3",
+      "cost": 157.0,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-3",
+      "to": "f0-stairs-c1",
+      "cost": 157.0,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-stairs-c2",
+      "to": "f0-junction-4",
+      "cost": 142.2,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-4",
+      "to": "f0-stairs-c2",
+      "cost": 142.2,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-elevator-main",
+      "to": "f0-junction-5",
+      "cost": 148.4,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-5",
+      "to": "f0-elevator-main",
+      "cost": 148.4,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-node-entrance",
+      "to": "f0-junction-5",
+      "cost": 213.8,
+      "accessible": true,
+      "type": "walk"
+    },
+    {
+      "from": "f0-junction-5",
+      "to": "f0-node-entrance",
+      "cost": 213.8,
+      "accessible": true,
+      "type": "walk"
+    }
+  ]
+}
