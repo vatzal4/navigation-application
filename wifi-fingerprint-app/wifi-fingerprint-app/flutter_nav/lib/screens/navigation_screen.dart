@@ -3,6 +3,7 @@ import 'dart:io' show Platform;
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/nav_models.dart';
 import '../services/api_service.dart';
@@ -21,8 +22,9 @@ class _NavigationScreenState extends State<NavigationScreen> {
   static const double svgOriginalWidth = 1262.0;
   static const double svgOriginalHeight = 800.0;
 
-  late final NavigationApiService _apiService;
+  late NavigationApiService _apiService;
   late final WifiScannerService _scannerService;
+  late String _currentBackendUrl;
 
   // Selected floor in the floor picker (0, 1, 2)
   int _selectedFloor = 0;
@@ -52,14 +54,32 @@ class _NavigationScreenState extends State<NavigationScreen> {
   String? _errorMessage;
   String? _statusMessage;
 
+  static const String _prefBackendUrlKey = 'pref_nav_backend_url';
+
   @override
   void initState() {
     super.initState();
-    _apiService = NavigationApiService(baseUrl: widget.backendUrl);
+    _currentBackendUrl = widget.backendUrl;
+    _apiService = NavigationApiService(baseUrl: _currentBackendUrl);
     _scannerService = WifiScannerService();
 
-    _loadRooms();
+    _loadSavedBackendUrl();
     _initPositioning();
+  }
+
+  Future<void> _loadSavedBackendUrl() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final savedUrl = prefs.getString(_prefBackendUrlKey);
+      if (savedUrl != null && savedUrl.trim().isNotEmpty) {
+        if (!mounted) return;
+        setState(() {
+          _currentBackendUrl = savedUrl.trim();
+          _apiService = NavigationApiService(baseUrl: _currentBackendUrl);
+        });
+      }
+    } catch (_) {}
+    _loadRooms();
   }
 
   @override
@@ -333,6 +353,101 @@ class _NavigationScreenState extends State<NavigationScreen> {
     });
   }
 
+  void _showBackendSettingsDialog() {
+    final controller = TextEditingController(text: _currentBackendUrl);
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: const Color(0xFF1E293B),
+        title: const Text('Backend Server URL', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Enter the Flask backend URL (IP and port 5050):',
+                style: TextStyle(color: Colors.white70, fontSize: 13),
+              ),
+              const SizedBox(height: 12),
+              TextField(
+                controller: controller,
+                style: const TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: const Color(0xFF0F172A),
+                  labelText: 'Server URL',
+                  labelStyle: const TextStyle(color: Colors.white60),
+                  hintText: 'http://172.17.63.95:5050',
+                  hintStyle: const TextStyle(color: Colors.white38),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+                ),
+              ),
+              const SizedBox(height: 12),
+              const Text(
+                'Quick presets:',
+                style: TextStyle(color: Colors.white54, fontSize: 12),
+              ),
+              const SizedBox(height: 6),
+              Wrap(
+                spacing: 6,
+                runSpacing: 6,
+                children: [
+                  ActionChip(
+                    label: const Text('Wi-Fi (172.17.63.95)', style: TextStyle(fontSize: 11)),
+                    backgroundColor: const Color(0xFF334155),
+                    onPressed: () => controller.text = 'http://172.17.63.95:5050',
+                  ),
+                  ActionChip(
+                    label: const Text('USB/ADB (127.0.0.1)', style: TextStyle(fontSize: 11)),
+                    backgroundColor: const Color(0xFF334155),
+                    onPressed: () => controller.text = 'http://127.0.0.1:5050',
+                  ),
+                  ActionChip(
+                    label: const Text('Emulator (10.0.2.2)', style: TextStyle(fontSize: 11)),
+                    backgroundColor: const Color(0xFF334155),
+                    onPressed: () => controller.text = 'http://10.0.2.2:5050',
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(ctx),
+            child: const Text('Cancel', style: TextStyle(color: Colors.white54)),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF2563EB),
+              foregroundColor: Colors.white,
+            ),
+            onPressed: () async {
+              final newUrl = controller.text.trim();
+              if (newUrl.isNotEmpty) {
+                Navigator.pop(ctx);
+                try {
+                  final prefs = await SharedPreferences.getInstance();
+                  await prefs.setString(_prefBackendUrlKey, newUrl);
+                } catch (_) {}
+                if (!mounted) return;
+                setState(() {
+                  _currentBackendUrl = newUrl;
+                  _apiService = NavigationApiService(baseUrl: _currentBackendUrl);
+                  _errorMessage = null;
+                });
+                _loadRooms();
+                if (Platform.isAndroid) _scanAndLocate();
+              }
+            },
+            child: const Text('Save & Reconnect'),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -365,6 +480,11 @@ class _NavigationScreenState extends State<NavigationScreen> {
               _loadRooms();
               if (Platform.isAndroid) _scanAndLocate();
             },
+          ),
+          IconButton(
+            tooltip: 'Server Settings',
+            icon: const Icon(Icons.settings),
+            onPressed: _showBackendSettingsDialog,
           ),
         ],
       ),
@@ -549,40 +669,54 @@ class _NavigationScreenState extends State<NavigationScreen> {
             children: [
               const Text(
                 'Floor:',
-                style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold, fontSize: 14),
+                style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold, fontSize: 13),
               ),
-              const SizedBox(width: 12),
-              for (final fl in [0, 1, 2]) ...[
-                Padding(
-                  padding: const EdgeInsets.only(right: 8.0),
-                  child: ChoiceChip(
-                    label: Text(
-                      'Floor $fl',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: _selectedFloor == fl ? Colors.white : Colors.white70,
-                      ),
-                    ),
-                    selected: _selectedFloor == fl,
-                    selectedColor: const Color(0xFF2563EB),
-                    backgroundColor: const Color(0xFF0F172A),
-                    side: BorderSide(
-                      color: _selectedFloor == fl ? const Color(0xFF3B82F6) : const Color(0xFF475569),
-                    ),
-                    onSelected: (selected) {
-                      if (selected) {
-                        setState(() {
-                          _selectedFloor = fl;
-                        });
-                      }
-                    },
+              const SizedBox(width: 8),
+              Expanded(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
+                  child: Row(
+                    children: [
+                      for (final fl in [0, 1, 2])
+                        Padding(
+                          padding: const EdgeInsets.only(right: 6.0),
+                          child: ChoiceChip(
+                            showCheckmark: false,
+                            visualDensity: VisualDensity.compact,
+                            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            labelPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+                            label: Text(
+                              'Floor $fl',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 13,
+                                color: _selectedFloor == fl ? Colors.white : Colors.white70,
+                              ),
+                            ),
+                            selected: _selectedFloor == fl,
+                            selectedColor: const Color(0xFF2563EB),
+                            backgroundColor: const Color(0xFF0F172A),
+                            side: BorderSide(
+                              color: _selectedFloor == fl ? const Color(0xFF3B82F6) : const Color(0xFF475569),
+                            ),
+                            onSelected: (selected) {
+                              if (selected) {
+                                setState(() {
+                                  _selectedFloor = fl;
+                                });
+                              }
+                            },
+                          ),
+                        ),
+                    ],
                   ),
                 ),
-              ],
-              const Spacer(),
+              ),
+              const SizedBox(width: 8),
               // Positioning indicator badge
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
                 decoration: BoxDecoration(
                   color: _userLocation?.isManual == true
                       ? Colors.amber.withValues(alpha: 0.2)
@@ -590,6 +724,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
                   borderRadius: BorderRadius.circular(6),
                 ),
                 child: Row(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Icon(
                       _userLocation?.isManual == true ? Icons.touch_app : Icons.wifi,
@@ -617,6 +752,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
   }
 
   Widget _buildErrorBanner(String message) {
+    final isConnectionError = message.contains('http') || message.contains('Backend') || message.contains('timed out');
     return Container(
       width: double.infinity,
       color: Colors.red.shade900.withValues(alpha: 0.85),
@@ -631,6 +767,18 @@ class _NavigationScreenState extends State<NavigationScreen> {
               style: const TextStyle(color: Colors.white, fontSize: 13),
             ),
           ),
+          if (isConnectionError) ...[
+            const SizedBox(width: 6),
+            TextButton(
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.amberAccent,
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                visualDensity: VisualDensity.compact,
+              ),
+              onPressed: _showBackendSettingsDialog,
+              child: const Text('Change IP', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
+            ),
+          ],
           IconButton(
             icon: const Icon(Icons.close, color: Colors.white70, size: 16),
             padding: EdgeInsets.zero,

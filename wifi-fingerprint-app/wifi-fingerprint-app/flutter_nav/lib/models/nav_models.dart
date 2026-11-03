@@ -27,6 +27,17 @@ class RoomDestination {
       y: (json['y'] as num?)?.toDouble(),
     );
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is RoomDestination &&
+          runtimeType == other.runtimeType &&
+          nodeId == other.nodeId &&
+          roomId == other.roomId;
+
+  @override
+  int get hashCode => nodeId.hashCode ^ roomId.hashCode;
 }
 
 class RouteStep {
